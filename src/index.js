@@ -15,33 +15,34 @@ import Profile from "./components/users/Profile";
 import Project from "./components/projects/Project";
 import Error404 from "./components/errors/404";
 import EditProject from "./components/projects/EditProject";
-import ForgotPassword from "./components/users/ForgotPassword";
+import Home from "./Home";
 
 ReactDOM.render(
     <div id="wrapper">
         <BrowserRouter>
             <Switch>
-                <Route exact path={"/forgotpassword"}>
-                    <ForgotPassword></ForgotPassword>
-                </Route>
                 <Route exact path="/dashboard">
-                <SideNav />
-                    <div className="d-flex flex-column" id="content-wrapper">
-                        <div id="content">
-                            <Navbar />
-                    <Dashboard />
+                    <div className="body-container">
+                        <Navbar />
+                        <div className="main-container bgc-white">
+                            <SideNav />
+                            <div className="main-content" role={"main"}>
+                                <Dashboard />
+                                <Footer />
+                            </div>
                         </div>
-                        <Footer />
                     </div>
                 </Route>
                 <Route exact path="/admin/settings">
-                    <SideNav />
-                    <div className="d-flex flex-column" id="content-wrapper">
-                        <div id="content">
-                            <Navbar />
-                            <Settings />
+                    <div className="body-container">
+                        <Navbar />
+                        <div className="main-container bgc-white">
+                            <SideNav />
+                            <div className="main-content" role={"main"}>
+                                <Settings />
+                                <Footer />
+                            </div>
                         </div>
-                        <Footer />
                     </div>
                 </Route>
                 <Route exact path="/login">
@@ -49,79 +50,103 @@ ReactDOM.render(
                 </Route>
 
                 <Route exact path="/users">
-                    <SideNav />
-                    <div className="d-flex flex-column" id="content-wrapper">
-                        <div id="content">
-                            <Navbar />
-                            <Users />
+                    <div className="body-container">
+                        <Navbar />
+                        <div className="main-container bgc-white">
+                            <SideNav />
+                            <div className="main-content" role={"main"}>
+                                <Users />
+                                <Footer />
+                            </div>
                         </div>
-                        <Footer />
                     </div>
                 </Route>
                 <Route exact path="/profile">
-                    <SideNav />
-                    <div className="d-flex flex-column" id="content-wrapper">
-                        <div id="content">
-                            <Navbar />
-                            <Profile />
+                    <div className="body-container">
+                        <Navbar />
+                        <div className="main-container bgc-white">
+                            <SideNav />
+                            <div className="main-content" role={"main"}>
+                                <Profile />
+                                <Footer />
+                            </div>
                         </div>
-                        <Footer />
                     </div>
                 </Route>
                 <Route exact path="/users/add">
-                    <SideNav />
-                    <div className="d-flex flex-column" id="content-wrapper">
-                        <div id="content">
-                            <Navbar />
-                            <AddUser />
+                    <div className="body-container">
+                        <Navbar />
+                        <div className="main-container bgc-white">
+                            <SideNav />
+                            <div className="main-content" role={"main"}>
+                                <AddUser />
+                                <Footer />
+                            </div>
                         </div>
-                        <Footer />
                     </div>
                 </Route>
                 <Route exact path="/projects/add">
-                    <SideNav />
-                    <div className="d-flex flex-column" id="content-wrapper">
-                        <div id="content">
-                            <Navbar />
-                            <AddProject />
+                    <div className="body-container">
+                        <Navbar />
+                        <div className="main-container bgc-white">
+                            <SideNav />
+                            <div className="main-content" role={"main"}>
+                                <AddProject />
+                                <Footer />
+                            </div>
                         </div>
-                        <Footer />
                     </div>
                 </Route>
                 <Route exact path="/projects/mine">
-                    <SideNav />
-                    <div className="d-flex flex-column" id="content-wrapper">
-                        <div id="content">
-                            <Navbar />
-                            <MyProjects />
+                    <div className="body-container">
+                        <Navbar />
+                        <div className="main-container bgc-white">
+                            <SideNav />
+                            <div className="main-content" role={"main"}>
+                                <MyProjects />
+                                <Footer />
+                            </div>
                         </div>
-                        <Footer />
                     </div>
                 </Route>
                 <Route path="/projects/:id">
-                    <SideNav />
-                    <div className="d-flex flex-column" id="content-wrapper">
-                        <div id="content">
-                            <Navbar />
-                            <Project />
+                    <div className="body-container">
+                        <Navbar />
+                        <div className="main-container bgc-white">
+                            <SideNav />
+                            <div className="main-content" role={"main"}>
+                                <Project />
+                                <Footer />
+                            </div>
                         </div>
-                        <Footer />
                     </div>
                 </Route>
                 <Route path="/projects/edit/:id">
-                    <SideNav />
-                    <div className="d-flex flex-column" id="content-wrapper">
-                        <div id="content">
-                            <Navbar />
-                            <EditProject />
+                    <div className="body-container">
+                        <Navbar />
+                        <div className="main-container bgc-white">
+                            <SideNav />
+                            <div className="main-content" role={"main"}>
+                                <EditProject />
+                                <Footer />
+                            </div>
                         </div>
-                        <Footer />
                     </div>
                 </Route>
+                <Route exact path={"/"}>
+                    <Home />
+                </Route>
                 <Route path="/*">
-                    
-                            <Error404 />
-                        
+                    <div className="body-container">
+                        <Navbar></Navbar>
+                        <div className="main-container bgc-white">
+                            <SideNav />
+                            <div className="main-content" role={"main"}>
+                                <Error404 />
+                                <Footer />
+                            </div>
+                        </div>
+                    </div>
                 </Route>
             </Switch>
         </BrowserRouter>

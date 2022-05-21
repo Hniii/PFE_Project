@@ -6,7 +6,7 @@ import AOS from "aos";
 function Dashboard() {
     const [posts, setPost] = useState([]);
     const [token, setToken] = useState(localStorage.getItem("token"));
-    const [role,setRole] =useState(localStorage.getItem("role"));
+    const [role, setRole] = useState(localStorage.getItem("role"));
     const urls = "http://127.0.0.1:8000/api";
 
     let history = useHistory();
@@ -14,9 +14,8 @@ function Dashboard() {
         history.push("/projects/" + id);
     };
 
-
-    const getall = async () => {
-        let url = urls + "/projects/all";
+    const getAll = async () => {
+        let url = urls + "/all";
         let options = {
             method: "get",
             url: url,
@@ -48,14 +47,11 @@ function Dashboard() {
         });
     };
     useEffect(() => {
-        let t = localStorage.getItem("token");
-        console.log(t);
-        if (t!==null) {
-            if (role==="admin"){
-                getall();
-            }else{
-
-            getProjects();
+        if (token !== null) {
+            if (role === "admin") {
+                getAll();
+            } else {
+                getProjects();
             }
             AOS.init();
             AOS.refresh();
@@ -65,8 +61,8 @@ function Dashboard() {
     }, []);
 
     return (
-        <>
-            <h3 className="text-dark mb-4">All Suggested Projects</h3>
+        <div className="page-content container container-plus">
+            <h1 class="page-title text-primary-d2 text-150">Dashboard</h1>
             <div className="col">
                 {() => {
                     if (posts.length === 0) {
@@ -81,35 +77,42 @@ function Dashboard() {
                                     <label className="form-label project-title">
                                         {post.title}
                                     </label>
-{/* {role==="admin"?({post.state === "approved" ? (
-                            <label className="form-label approved">
-                                Approved
-                            </label>
-                        ) : post.state === "rejected" ? (
-                            <label className="form-label rejected">
-                                Rejected
-                                <a className="rejected" href="#">
-                                    ?
-                                </a>
-                            </label>
-                        ) : (
-                            <label className="form-label pendding-approval">
-                                Pendidng Approval
-                            </label>
-                        )}):("")} */}
+                                    {role === "admin" ? (
+                                        post.state === "approved" ? (
+                                            <label className="form-label approved">
+                                                Approved
+                                            </label>
+                                        ) : post.state === "rejected" ? (
+                                            <label className="form-label rejected">
+                                                Rejected
+                                                <a
+                                                    className="rejected"
+                                                    href="#"
+                                                >
+                                                    ?
+                                                </a>
+                                            </label>
+                                        ) : (
+                                            <label className="form-label pendding-approval">
+                                                Pendidng Approval
+                                            </label>
+                                        )
+                                    ) : (
+                                        ""
+                                    )}
 
                                     <div className="row">
                                         <div className="col">
                                             <label className="form-label title">
                                                 keywords
                                             </label>
-                                            <ul className="list-group keywords">
+                                            <ul className=" keywords">
                                                 {post.keywords.map(
                                                     (keyword, index) => {
                                                         return (
                                                             <li
                                                                 key={index}
-                                                                className="list-group-item keyword"
+                                                                className="keyword"
                                                             >
                                                                 <span>
                                                                     {keyword}
@@ -119,6 +122,11 @@ function Dashboard() {
                                                     }
                                                 )}
                                             </ul>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col d-flex justify-content-between">
+                                            <label>author</label>
                                             <button
                                                 className="btn btn-primary more-details-btn"
                                                 type="button"
@@ -136,7 +144,7 @@ function Dashboard() {
                     );
                 })}
             </div>
-        </>
+        </div>
     );
 }
 

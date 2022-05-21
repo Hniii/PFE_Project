@@ -36,77 +36,83 @@ function MyProjects() {
     }, []);
 
     return (
-		<>
-
-<h3 className="text-dark mb-4">My Projects</h3>
-        <div className="col">
-            {() => {
-                if (posts.length === 0) {
-                    return <h1>Oops! there is no project to display</h1>;
-                }
-            }}
-            {posts.map((post, id) => {
-                return (
-                    <div key={id} className="row">
-                        <div className="col">
-                            <div className="project shadow-lg">
-                                <label className="form-label project-title">
-                                    {post.title}
-                                </label>
-                                {post.state === "approved" ? (
-                                    <label className="form-label approved">
-                                        Approved
+        <>
+            <h3 className="text-dark mb-4">My Projects</h3>
+            <div className="col">
+                {() => {
+                    if (posts.length === 0) {
+                        return <h1>Oops! there is no project to display</h1>;
+                    }
+                }}
+                {posts.map((post, id) => {
+                    return (
+                        <div key={id} className="row">
+                            <div className="col">
+                                <div className="project shadow-lg">
+                                    <label className="form-label project-title">
+                                        {post.title}
                                     </label>
-                                ) : post.state === "rejected" ? (
-                                    <label className="form-label rejected">
-                                        Rejected
-                                        <a className="rejected" href="#">
-                                            ?
-                                        </a>
-                                    </label>
-                                ) : (
-                                    <label className="form-label pendding-approval">
-                                        Pendidng Approval
-                                    </label>
-                                )}
-                                <div className="row">
-                                    <div className="col">
-                                        <label className="form-label title">
-                                            Tools and Tags
+                                    {post.state === "approved" ? (
+                                        <label className="form-label approved">
+                                            Approved
                                         </label>
-                                        <ul className="list-group keywords">
-                                            {post.keywords.map(
-                                                (keyword, index) => {
-                                                    return (
-                                                        <li
-                                                            key={index}
-                                                            className="list-group-item keyword"
-                                                        >
-                                                            <span>
-                                                                {keyword}
-                                                            </span>
-                                                        </li>
-                                                    );
-                                                }
-                                            )}
-                                        </ul>
-                                        <button
-                                            className="btn btn-primary more-details-btn"
-                                            type="button"
-                                            onClick={() => {
-                                                goTo(post.id);
-                                            }}
-                                        >
-                                            More details
-                                        </button>
+                                    ) : post.state === "rejected" ? (
+                                        <label className="form-label rejected">
+                                            Rejected
+                                            <a className="rejected" href="#">
+                                                ?
+                                            </a>
+                                        </label>
+                                    ) : (
+                                        <label className="form-label pendding-approval">
+                                            Pendidng Approval
+                                        </label>
+                                    )}
+
+                                    <div className="row">
+                                        <div className="col">
+                                            <label className="form-label title">
+                                                keywords
+                                            </label>
+                                            <ul className=" keywords">
+                                                {post.keywords.map(
+                                                    (keyword, index) => {
+                                                        return (
+                                                            <li
+                                                                key={index}
+                                                                className="keyword"
+                                                            >
+                                                                <span>
+                                                                    {keyword}
+                                                                </span>
+                                                            </li>
+                                                        );
+                                                    }
+                                                )}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div className="row">
+                                        <div className="col d-flex justify-content-between">
+                                            <label>author</label>
+                                            <button
+                                                className="btn btn-primary more-details-btn"
+                                                type="button"
+                                                onClick={() => {
+                                                    goTo(post.id);
+                                                }}
+                                            >
+                                                More details
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                );
-            })}
-        </div></>
+                    );
+                })}
+            </div>
+        </>
     );
 }
 

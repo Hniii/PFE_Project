@@ -25,14 +25,12 @@ function Project() {
             },
         };
         try {
-            
-        let response = await axios(options);
+            let response = await axios(options);
             let data = response.data;
             setPost(data);
         } catch (error) {
-            
             history.push("/404");
-        };
+        }
     };
 
     const deleteProject = async () => {
@@ -97,24 +95,20 @@ function Project() {
             },
         };
 
-  const Swal = require("sweetalert2");
+        const Swal = require("sweetalert2");
         try {
             let response = await axios(options);
-        if (response && response.status === 200) 
-            {Swal.fire({
-                title: "your project is validated",
-                icon: "success",
-        
-                iconColor: "#3dc00c",
-            }).then(()=>{
+            if (response && response.status === 200) {
+                Swal.fire({
+                    title: "your project is validated",
+                    icon: "success",
 
-            history.push("/dashboard");
-            });}
-        
-        } catch (error) {
-            
-        }
-        
+                    iconColor: "#3dc00c",
+                }).then(() => {
+                    history.push("/dashboard");
+                });
+            }
+        } catch (error) {}
     };
 
     const editProject = async () => {
@@ -152,48 +146,48 @@ function Project() {
                             </label>
                         )}
                     </div>
-                    <div className="col action">
-                    {role === "admin" ? (
-                        <a
-                            className="btn btn-danger btn-circle ms-1"
-                            role="button"
-                            onClick={deleteProject}
-                        >
-                            <i className="fas fa-trash text-white"></i>
-                        </a>
+                    <div className="col d-flex flex-row-reverse align-items-center">
+                        {role === "admin" ? (
+                            <a
+                                className="btn btn-danger btn-circle m-1"
+                                role="button"
+                                onClick={deleteProject}
+                            >
+                                <i className="fas fa-trash text-white"></i>
+                            </a>
                         ) : (
                             ""
                         )}
                         {role === "teacher" ? (
-                        <a
-                            className="btn btn-info btn-circle ms-1"
-                            role="button"
-                            onClick={editProject}
-                        >
-                            <i className="fas fa-edit text-white"></i>
-                        </a>
+                            <a
+                                className="btn btn-info btn-circle m-1"
+                                role="button"
+                                onClick={editProject}
+                            >
+                                <i className="fas fa-edit text-white"></i>
+                            </a>
                         ) : (
                             ""
                         )}
                         {role === "admin" ? (
-                        <a
-                            className="btn btn-warning btn-circle ms-1"
-                            role="button"
-                            onClick={archiveProject}
-                        >
-                            <i className="fas fa-archive text-white"></i>
-                        </a>
+                            <a
+                                className="btn btn-warning btn-circle m-1"
+                                role="button"
+                                onClick={archiveProject}
+                            >
+                                <i className="fas fa-archive text-white"></i>
+                            </a>
                         ) : (
                             ""
                         )}
-                        {role === "admin" &&post.state !== "approved" ? (
-                        <a
-                            className="btn btn-success btn-circle ms-1"
-                            role="button"
-                            onClick={approveProject}
-                        >
-                            <i className="fas fa-check text-white"></i>
-                        </a>
+                        {role === "admin" && post.state !== "approved" ? (
+                            <a
+                                className="btn btn-success btn-circle m-1"
+                                role="button"
+                                onClick={approveProject}
+                            >
+                                <i className="fas fa-check text-white"></i>
+                            </a>
                         ) : (
                             ""
                         )}
@@ -248,30 +242,35 @@ function Project() {
                         </ul>
                     </div>
                 </div>
-                <div className="row">
-                    <label className="form-label title">Attachment</label>
-                    <div className="col file-review">
-                        <label className="form-label">
-                            Here you can find the project presentation sheet
-                        </label>
-                        <div>
-                            <img
-                                className="pdf-style"
-                                src={
-                                    window.location.origin +
-                                    "/assets/img/pdf-24.svg"
-                                }
-                            />
-                            <a
-                                href={
-                                    "http://127.0.0.1:8000/files/" + post.file
-                                }
-                                target="_blank"
-                                download
-                            >
-                                Download the file here
-                            </a>
-                        </div>
+                <div className="row ">
+                    <div className="col">
+                        <label className="form-label title">Attachment</label>
+
+                        <div className="row">
+                            <div className="col d-flex justify-content-between align-items-center">
+                            <label className="form-label">
+                                Here you can find the project presentation sheet
+                            </label>
+                            <div>
+                                <img
+                                    className="pdf-style"
+                                    src={
+                                        window.location.origin +
+                                        "/assets/image/pdf-24.svg"
+                                    }
+                                />
+                                <a
+                                    href={
+                                        "http://127.0.0.1:8000/files/" +
+                                        post.file
+                                    }
+                                    target="_blank"
+                                    download
+                                >
+                                    Download the file here
+                                </a>
+                            </div>
+                        </div></div>
                     </div>
                 </div>
             </div>

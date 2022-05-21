@@ -10,7 +10,7 @@ function AddProject() {
     const [keywords, setKeywords] = useState([]);
     const [file, setFile] = useState(null);
     const [keyword, setKeyword] = useState("");
-    const [level, setLevel] = useState(null);
+    const [level, setLevel] = useState(1);
     const [levels, setLevels] = useState([]);
     const [token, setToken] = useState(localStorage.getItem("token"));
     var user = localStorage.getItem("user");
@@ -113,13 +113,10 @@ function AddProject() {
                                     }}
                                 />
                             </div>
-                            <div className="row mb-3">
+                            <div className="row mb-3 flex-column">
                                 <label className="form-label">Level</label>
                                 <select
-                                    className="form-select"
-                                    style={{
-                                        fontSize: ".8rem",
-                                    }}
+                                    className="form-control form-control-user"
                                     onChange={(event) => {
                                         console.log(event.target.value);
                                         setLevel(event.target.value);
@@ -164,6 +161,7 @@ function AddProject() {
                                 </button>
                             </div>
                             <div className="row mb-3">
+                                <div className="col">
                                 <label className="form-label ">
                                     Tools and Tags
                                 </label>
@@ -177,12 +175,12 @@ function AddProject() {
                                         There is no keyword added yet
                                     </span>
                                 ) : (
-                                    <ul className="list-group keywords">
+                                    <ul className=" keywords">
                                         {keywords.map((keyword, keywordId) => {
                                             return (
                                                 <li
                                                     key={keywordId}
-                                                    className="list-group-item keyword"
+                                                    className="keyword"
                                                 >
                                                     <span>{keyword}</span>
                                                 </li>
@@ -191,7 +189,7 @@ function AddProject() {
                                     </ul>
                                 )}
                             </div>
-
+</div>
                             <div className="row mb-3">
                                 <label className="form-label">summary</label>
                                 <textarea
@@ -216,9 +214,8 @@ function AddProject() {
                                     }}
                                 ></textarea>
                             </div>
-                            <div className="row mb-3">
+                            <div className="row mb-3 ">
                                 <input
-                                    className="form-control"
                                     type="file"
                                     onChange={(event) => {
                                         setFile(event.target.files[0]);

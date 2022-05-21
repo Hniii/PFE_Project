@@ -75,7 +75,7 @@ function Settings() {
   };
 
   const getLevels = async () => {
-    let url = urls + "/niveau";
+    let url = urls + "/levels";
     let options = {
       method: "get",
       url: url,

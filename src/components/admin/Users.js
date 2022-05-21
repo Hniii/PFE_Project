@@ -22,6 +22,7 @@ function Users() {
     const [numbers, setNumbers] = useState([]);
 
     const [token, setToken] = useState(localStorage.getItem("token"));
+    const user = localStorage.getItem("user");
     const urls = "http://127.0.0.1:8000/api";
 
     let history = useHistory();
@@ -64,7 +65,7 @@ function Users() {
     };
 
     const getUsers = async () => {
-        let url = urls + "/users";
+        let url = urls + "/users/"+user;
         let options = {
             method: "get",
             url: url,
@@ -74,8 +75,11 @@ function Users() {
             },
         };
         let response = await axios(options);
-        let data = response.data;
+        let data = []
+        for(var i in response.data)
+                data.push(response.data[i]);
         setUsers(data);
+        console.log(data);
         if (10 > data.length) {
             setPage(data);
         } else {
