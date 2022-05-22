@@ -9,8 +9,11 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [FrgPswdEmail, setFrgPswdEmail] = useState("");
+
+  //handlers
   const [emailErr, setEmailErr] = useState(false);
   const [passwordErr, setPasswordErr] = useState(false);
+  const [FrgPswdEmailErr, setFrgPswdEmailErr] = useState(false);
   let history = useHistory();
 
   const login = async (event) => {
@@ -118,6 +121,19 @@ function passwordHandler(e) {
   }
 }
 
+
+function FrgPswdEmailHandler(e) {
+  let item = e.target.value;
+  let pattern =
+      /[a-zA-Z0-9]+[\.]?([a-zA-Z0-9]+)?[\@][a-z\-]{3,9}[\.][a-z]{2,5}/g;
+  if (pattern.test(item)) {
+      setFrgPswdEmailErr(false);
+
+      setFrgPswdEmail(e.target.value);
+  } else {
+      setFrgPswdEmailErr(true);
+  }
+}
   useEffect(() => {
       let token = localStorage.getItem("token");
       if (token!==null && token!=="undefined"){
@@ -316,10 +332,19 @@ function passwordHandler(e) {
                                 id="id-login-email"
                                 name="email"
                                 required
-                                onChange={(event) => {
-                                  setFrgPswdEmail(event.target.value);
-                                }}/><i className="fa fa-envelope text-grey-m2 ml-n4" />
-                              </div>
+                                onChange={FrgPswdEmailHandler}
+                                  /><i className="fa fa-envelope text-grey-m2 ml-n4" />
+                              </div>{" "}
+                                {FrgPswdEmailErr ? (
+                                    <div className="msgerror">
+                                        <span>
+                                            It should be a valid
+                                            email address!
+                                        </span>
+                                    </div>
+                                ) : (
+                                    ""
+                                )}
                             </div>
                             <div className="form-group col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3 mt-1">
                               <button type="submit" className="btn btn-orange btn-block px-4 btn-bold mt-2 mb-4">
