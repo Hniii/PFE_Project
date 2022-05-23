@@ -146,17 +146,7 @@ function FrgPswdEmailHandler(e) {
       }
     }, []);
   return (
-    <div className="body-container">
-    { /*  <div class="bubble x1"></div>
-    <div class="bubble x2"></div>
-    <div class="bubble x3"></div>
-    <div class="bubble x4"></div>
-    <div class="bubble x5"></div>
-    <div class="bubble x6"></div>
-    <div class="bubble x7"></div>
-    <div class="bubble x8"></div>
-    <div class="bubble x9"></div>
-  <div class="bubble x10"></div>*/}
+    <div className="body-container" style={{overflow:"hidden"}}>
         <div className="main-container container bgc-transparent">
           <div className="main-content minh-100 justify-content-center">
             <div className="p-2 p-4">
@@ -177,7 +167,10 @@ function FrgPswdEmailHandler(e) {
                             {/* default carousel section that you see when you open login page */}
                             <div style={{backgroundImage: 'url(assets/image/login-bg-1.svg)'}} className="px-3 bgc-blue-l4 d-flex flex-column align-items-center justify-content-center">
                               
-                            <img className="mt-3 mb-2 "  height={150}  src={window.location.origin + "/assets/image/logo.png"}/>
+                            <img className="mt-3 mb-2 " 
+                              src={window.location.origin + "/assets/image/logo.png"}
+                              style={{ height: "100px" }}
+                              />
                               <h2 className="text-d1 text-dark-l1">
                                 ESI <span className="text-80 text-dark-l1">Projects</span>
                               </h2>
@@ -213,6 +206,7 @@ function FrgPswdEmailHandler(e) {
                           <div className="d-none d-lg-block col-md-6 offset-md-3 mt-lg-4 px-0">
                             <h4 className="text-dark-tp4 border-b-1 brc-secondary-l2 pb-1 text-130">
                               {/*<FontAwesomeIcon icon="fa-solid fa-hand-wave" /> */} 
+                              <i className="fa fa-computer text-grey-m2 ml-n4" />
                               Welcome Back!
                             </h4>
                           </div>
