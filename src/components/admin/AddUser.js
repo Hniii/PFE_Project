@@ -114,24 +114,16 @@ function AddUser() {
         }
     }
     useEffect(() => {
-        let token = localStorage.getItem("token");
+       /* let token = localStorage.getItem("token");
         console.log(token);
         if (token === null) {
             history.push("/login");
-        }
+        }*/
     }, []);
 
     return (
-        <div className="container-fluid">
-            <h3 className="text-dark mb-4">Users</h3>
-            <div className="row mb-3">
-                <div className="col">
-                    <div className="card shadow mb-3">
-                        <div className="card-header py-3">
-                            <p className="text-primary m-0 fw-bold">Add user</p>
-                        </div>
-                        <div className="card-body">
-                            <form onSubmit={addUser}>
+        
+                            <form onSubmit={addUser}className="m-3">
                                 <div className="row">
                                     <div className="col">
                                         <div className="mb-3">
@@ -155,6 +147,7 @@ function AddUser() {
                                             ) : (
                                                 ""
                                             )}
+        
                                         </div>
                                     </div>
                                     <div className="col">
@@ -216,7 +209,7 @@ function AddUser() {
                                                 <strong>Role</strong>
                                             </label>
                                             <select
-                                                className="form-select"
+                                                className="mt-4 ace-select no-border text-dark-tp2 radius-round border-2 angle-down"
                                                 onChange={(e) =>
                                                     setRole(e.target.value)
                                                 }
@@ -338,7 +331,7 @@ function AddUser() {
                                                 <strong>Gender</strong>
                                             </label>
                                             <select
-                                                className="form-select"
+                                                className="mt-4 ace-select  text-dark-tp2 radius-round border-2 angle-down"
                                                 type="text"
                                                 onChange={(e) =>
                                                     setGender(e.target.value)
@@ -369,11 +362,8 @@ function AddUser() {
                                     </div>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                            
+                        
     );
 }
 export default AddUser;

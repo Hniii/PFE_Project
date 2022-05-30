@@ -1,0 +1,55 @@
+[
+    {
+      "id": 1,
+      "firstName": "Alia",
+      "lastName": "Jen",
+      "email": "jenny.chan@email.com",
+      "role": "teacher",
+      "author_lastName": "ahmed"
+      
+      
+    },
+    {
+      "id": 2,
+      "firstName": "Aya",
+      "lastName": "BenAli",
+      "email": "jenny.chan@email.com",
+      "role": "student",
+      "is_chef": 0,
+      "project_title":"Projet de gestion jdfbjhsfjbhvb",
+      "project_author_lastName":"Mohamed ben ali ben ahmed"
+    },
+    {
+      "id": 3,
+      "firstName": "Karima",
+      "lastName": "Kermi",
+      "email": "jenny.chan@email.com",
+      "role": "admin",
+      "author_lastName": "Mohamed ifri"
+
+    },
+    {
+      "id": 4,
+      "name": "Ifri",
+      "email": "mohamed.ifrif@email.com",
+      "role": "company",
+      "project_title": "hihihih"
+    },
+    {
+      "id": 5,
+      "firstName": "Jenny",
+      "lastName": "Jenny",
+      "email": "jenny.chan@email.com",
+      "role": "teacher",
+      "author_lastName": "prof x"
+    },
+    {
+        "id": 6,
+        "firstName": "Jenny",
+        "lastName": "Jenny",
+        "email": "jenny.chan@email.com",
+        "role": "teacher",
+        "supervisor": "ifri",
+        "author_lastName":"kermi"
+      }
+  ]
